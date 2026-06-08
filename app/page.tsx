@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+import type { Swiper as SwiperClass } from 'swiper';
 import { Navigation as NavBar } from '@/app/components/Navigation';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -593,7 +594,7 @@ const qualityCards = [
 ];
 
 function QualityOfLifeSection() {
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
   const videoRefs = useRef<Record<number, HTMLVideoElement>>({});
 
   useEffect(() => {
@@ -641,7 +642,7 @@ function QualityOfLifeSection() {
           {/* Navigation Buttons */}
           <div className="flex gap-3 hidden">
             <button
-              onClick={() => swiperRef.current?.swiper?.slidePrev()}
+              onClick={() => swiperRef.current?.slidePrev()}
               className="w-12 h-12 rounded-full bg-[#D4AF37]/20 hover:bg-[#D4AF37]/40 text-[#D4AF37] flex items-center justify-center transition-all duration-300 flex-shrink-0"
             >
               <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current rotate-180">
@@ -649,7 +650,7 @@ function QualityOfLifeSection() {
               </svg>
             </button>
             <button
-              onClick={() => swiperRef.current?.swiper?.slideNext()}
+              onClick={() => swiperRef.current?.slideNext()}
               className="w-12 h-12 rounded-full bg-[#D4AF37]/20 hover:bg-[#D4AF37]/40 text-[#D4AF37] flex items-center justify-center transition-all duration-300 flex-shrink-0"
             >
               <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current">
@@ -661,7 +662,9 @@ function QualityOfLifeSection() {
 
         {/* Swiper Carousel */}
         <Swiper
-          ref={swiperRef}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
           modules={[Navigation, Pagination]}
           slidesPerView={1.5}
           spaceBetween={24}
