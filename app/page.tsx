@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import type { Swiper as SwiperClass } from 'swiper';
 import { Navigation as NavBar } from '@/app/components/Navigation';
+import { Footer } from '@/app/components/footer';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -193,41 +194,79 @@ export default function Home() {
               About Patriji
             </span>
 
-            {!playVideo ? (
-              <div className="relative aspect-[4/3] bg-transparent">
-                {/* Muted Video Background */}
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src="https://www.youtube.com/embed/3cuO6F8tpdk?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=3cuO6F8tpdk&rel=0&showinfo=0&modestbranding=1&disablekb=1&iv_load_policy=3"
-                  title="About Patriji"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  className="w-full h-full object-cover scale-150 opacity-30 mix-blend-screen transition-all duration-500 group-hover:opacity-100"
-                ></iframe>
+            <div className="relative aspect-[4/3] bg-transparent">
+              {/* Muted Video Background */}
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/3cuO6F8tpdk?enablejsapi=1&autoplay=1&mute=1&controls=0&loop=1&playlist=3cuO6F8tpdk&rel=0&showinfo=0&modestbranding=1&disablekb=1&iv_load_policy=3"
+                title="About Patriji"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                className="w-full h-full object-cover scale-150 opacity-30 mix-blend-screen transition-all duration-500 group-hover:opacity-100"
+              ></iframe>
 
-                {/* Play Button Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                  <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
-                    <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1" style={{ transform: 'scale(1.19371)' }}></div>
-                  </div>
+              {/* Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+                <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1" style={{ transform: 'scale(1.19371)' }}></div>
                 </div>
               </div>
-            ) : (
-              <div className="relative aspect-[4/3]">
-                {/* Unmuted Video with Audio */}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Video Modal Popup */}
+        <AnimatePresence>
+          {playVideo && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setPlayVideo(false)}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden bg-black border border-[#D4AF37]/30 shadow-2xl"
+              >
+                {/* Video with Audio */}
                 <iframe
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/3cuO6F8tpdk?autoplay=1&controls=1&loop=1&playlist=3cuO6F8tpdk&rel=0&showinfo=0&modestbranding=1"
+                  src="https://www.youtube.com/embed/3cuO6F8tpdk?autoplay=1&controls=1&rel=0&showinfo=0&modestbranding=1"
                   title="About Patriji"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  className="w-full h-full"
+                  className="absolute inset-0"
                 ></iframe>
-              </div>
-            )}
-          </div>
-        </motion.div>
+
+                {/* Close Button */}
+                <button
+                  onClick={() => setPlayVideo(false)}
+                  className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-[#D4AF37] text-white hover:text-black flex items-center justify-center transition-all duration-300 border border-white/20"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M18 6l-12 12"></path>
+                    <path d="M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Navigation Arrows */}
         <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 md:px-12 pointer-events-none z-10 hidden">
@@ -351,6 +390,9 @@ export default function Home() {
       >
         🙏 Event
       </motion.button>
+
+      <Footer />
+
     </div>
   );
 }
@@ -360,19 +402,19 @@ const videoSections = [
     id: 1,
     title: 'About Patriji',
     description: 'Discover the path to inner peace and spiritual awakening through Anapanasati Meditation',
-    video: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4'
+    video: '/videos/patriji_slider_org.mp4'
   },
   {
     id: 2,
     title: 'About Patriji',
     description: 'Experience the profound benefits of meditation and conscious living',
-    video: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4'
+    video: '/videos/patriji_slider_org.mp4'
   },
   {
     id: 3,
     title: 'About Patriji',
     description: 'Join our global community of spiritual seekers and meditation practitioners',
-    video: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4'
+    video: '/videos/patriji_slider-org.mp4'
   }
 ];
 
@@ -508,7 +550,7 @@ function AboutPatrijiSection() {
             </h2>
 
             <p className="text-xl md:text-2xl text-[#D4AF37] font-semibold mb-8 tracking-wide">
-              &lt;1947 – 2022&gt;
+              &lt;1947 – 2026&gt;
             </p>
 
             <div className="space-y-6 text-slate-300 text-base md:text-lg leading-relaxed">

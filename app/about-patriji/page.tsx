@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -41,33 +41,7 @@ function AboutPatrijiPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
               </div>
 
-              {/* Small Video - Diagonally Touched Bottom Right */}
-              <div className="absolute bottom-0 right-0 h-40 w-56 rounded-2xl overflow-hidden shadow-2xl border-4 border-[#D4AF37] bg-black z-10">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/3cuO6F8tpdk?enablejsapi=1&mute=1&controls=0&loop=1&playlist=3cuO6F8tpdk&rel=0&showinfo=0&modestbranding=1&disablekb=1&iv_load_policy=3"
-                  title="Patriji's Video"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-
-                {/* Play Button on Small Video */}
-                <button
-                  onClick={() => setIsVideoModalOpen(true)}
-                  className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-all duration-300 group"
-                  aria-label="Play video with audio"
-                >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#D4AF37] group-hover:scale-110 transition-transform duration-300">
-                    <svg
-                      className="w-4 h-4 text-black ml-0.5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </button>
-              </div>
+           
 
               <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-[#D4AF37]/20 rounded-full blur-[80px] -z-10"></div>
             </motion.div>
@@ -87,14 +61,25 @@ function AboutPatrijiPage() {
               </h1>
 
               <p className="text-base md:text-lg text-[#D4AF37] font-semibold mb-4 tracking-wide">
-                &lt;1947 – 2022&gt;
+                &lt;1947 – 2026&gt;
               </p>
 
-              <div className="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
+              <div className="space-y-12 text-slate-300 text-sm md:text-base leading-relaxed">
                 <p>
                   Dr. Brahmarshi Pitamaha Patriji hails from Telangana, a Family man with Ag.Msc degree, flutist, avid reader with many more feathers to his hat. Became enlightened in the year 1979, since then his journey to awaken and enlighten every individual on the Spiritual path began. Hence, PSSM now has presence in more than 40 countries with crores and crores of people imbibing meditation.
                 </p>
 
+                <motion.a
+                  href="#"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center gap-4 px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#F4DF8D] text-black rounded-full font-bold text-sm md:text-base shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all w-fit"
+                >
+                  Know More
+                  <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </motion.a>
               </div>
             </motion.div>
           </div>
