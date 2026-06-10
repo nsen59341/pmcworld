@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export function Navigation() {
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
@@ -13,9 +14,11 @@ export function Navigation() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a href="/">
-              <img
+              <Image
                 src="/favicon.png"
                 alt="PMC World Logo"
+                width={40}
+                height={40}
                 className="w-10 h-10 object-contain"
               />
             </a>

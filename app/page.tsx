@@ -56,10 +56,6 @@ export default function Home() {
   const [showMahashivratriPopup, setShowMahashivratriPopup] = useState(false);
 
   useEffect(() => {
-    setShowMahashivratriPopup(true);
-  }, []);
-
-  useEffect(() => {
     if (!autoPlay) return;
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -104,7 +100,7 @@ export default function Home() {
                   backgroundColor: slide.bgColor,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundAttachment: 'fixed'
+                  backgroundAttachment: 'scroll'
                 }}
               >
                 {/* Content */}
