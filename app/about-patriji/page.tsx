@@ -23,12 +23,64 @@ function AboutPatrijiPage() {
       <section className="relative overflow-hidden bg-white px-5 py-8 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-[1160px]">
           <div className="relative grid min-h-[535px] grid-cols-1 gap-0 lg:grid-cols-[2fr_1fr]">
-            {/* Left - Portrait Panel */}
+            {/* Mobile: portrait above video, 70/30 split */}
+            <div className="lg:hidden">
+              {/* Image card - 70% visual weight */}
+              <div className="relative min-h-[340px] overflow-hidden rounded-t-[10px] bg-[#3674cf] shadow-lg sm:min-h-[400px]">
+                <Image
+                  alt="Patriji"
+                  fill
+                  priority
+                  sizes="100vw"
+                  className="object-contain object-bottom"
+                  src="/images/patriji-about.png"
+                />
+              </div>
+
+              {/* Thin blue connector with concave ends - no white background, positioned between cards */}
+              <div className="relative z-10 flex justify-center -mt-1">
+                <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 0 Q24 12 12 24 L108 24 Q96 12 108 0 Z" fill="#3674CF" />
+                </svg>
+              </div>
+
+              {/* Video card - 30% visual weight */}
+              <div className="relative bg-white shadow-md">
+                <div className="px-2 pb-2 pt-0 sm:px-3 sm:pb-3">
+                  <button
+                    onClick={() => setIsVideoModalOpen(true)}
+                    className="group relative aspect-[16/9] w-full overflow-hidden rounded-[10px] bg-neutral-900 text-left shadow-xl"
+                    aria-label="Watch Patriji video"
+                  >
+                    <Image
+                      alt="Patriji video thumbnail"
+                      fill
+                      sizes="100vw"
+                      className="object-cover opacity-90 transition group-hover:scale-105"
+                      src="/images/patriji2.jfif"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 text-[10px] font-bold text-white backdrop-blur-sm sm:px-5 sm:py-2 sm:text-[12px]">
+                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-neutral-900 sm:h-6 sm:w-6">
+                          <svg className="ml-0.5 h-2.5 w-2.5 sm:h-3 sm:w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </span>
+                        Watch video
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Portrait - desktop only */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="relative min-h-[360px] overflow-hidden rounded-t-[10px] bg-[#3674cf] sm:min-h-[430px] lg:min-h-[410px] lg:rounded-bl-none lg:rounded-tr-none"
+              className="relative hidden min-h-[410px] overflow-hidden rounded-t-[10px] bg-[#3674cf] lg:block lg:rounded-tr-none"
             >
               <Image
                 alt="Patriji"
@@ -81,7 +133,7 @@ function AboutPatrijiPage() {
                 </div>
               </div>
 
-              <div className="mt-8 flex items-end justify-start lg:mt-0 lg:justify-end">
+              <div className="hidden items-end justify-start lg:mt-0 lg:flex lg:justify-end">
                 <button
                   onClick={() => setIsVideoModalOpen(true)}
                   className="group relative aspect-[16/9] w-full max-w-[360px] overflow-hidden rounded-[10px] bg-neutral-900 text-left shadow-xl lg:-mt-20 lg:max-w-none"

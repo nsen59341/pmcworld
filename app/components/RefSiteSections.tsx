@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type IconName = 'activity' | 'arrow' | 'globe' | 'heart' | 'mapPin' | 'play' | 'sparkles' | 'users';
 
@@ -403,11 +403,14 @@ function TestimonialsMarquee() {
 }
 
 function MeditationNow() {
+  const [showMeditationVideo, setShowMeditationVideo] = useState(false);
+
   return (
     <section className="relative mx-auto w-full overflow-hidden bg-black px-6 py-24 text-white lg:px-12">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#D4AF37_0%,_transparent_45%)] opacity-15" />
-      <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
+          className="text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -419,18 +422,19 @@ function MeditationNow() {
           <h2 className="mb-4 text-4xl font-black uppercase leading-tight tracking-tight md:text-7xl">
             Let&apos;s Meditate Now
           </h2>
-          <p className="max-w-2xl text-lg leading-relaxed text-white/75">
+          <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/75">
             Begin with a quick guided meditation and experience the simplicity of Anapanasati:
             observing natural breath with awareness.
           </p>
         </motion.div>
 
         <motion.div
-          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          className="relative mx-auto mt-16 max-w-lg overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur cursor-pointer"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
+          onClick={() => setShowMeditationVideo(true)}
         >
           <div className="relative aspect-video overflow-hidden rounded-[1.5rem] bg-slate-900">
             <div
@@ -439,7 +443,7 @@ function MeditationNow() {
               role="img"
               style={{
                 backgroundImage:
-                  'url("https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=1200&auto=format&fit=crop")',
+                  'url("/images/be_a_meditator.png")',
               }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
@@ -456,6 +460,57 @@ function MeditationNow() {
           </div>
         </motion.div>
       </div>
+
+      {/* YouTube Video Modal */}
+      <AnimatePresence>
+        {showMeditationVideo && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowMeditationVideo(false)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden bg-black border border-[#D4AF37]/30 shadow-2xl"
+            >
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/aVkehicsHao?autoplay=1&controls=1&rel=0&showinfo=0&modestbranding=1"
+                title="Quick 20 minutes meditation"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0"
+              />
+
+              <button
+                onClick={() => setShowMeditationVideo(false)}
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-[#D4AF37] text-white hover:text-black flex items-center justify-center transition-all duration-300 border border-white/20"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 6l-12 12"></path>
+                  <path d="M6 6l12 12"></path>
+                </svg>
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
