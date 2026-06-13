@@ -7,6 +7,8 @@ import { Navigation, Pagination } from 'swiper/modules';
 import type { Swiper as SwiperClass } from 'swiper';
 import { Navigation as NavBar } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/footer';
+import { PmcWorldMovementSection } from '@/app/components/PmcWorldMovementSection';
+import { RefSiteSections } from '@/app/components/RefSiteSections';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -387,6 +389,10 @@ export default function Home() {
         🙏 Event
       </motion.button>
 
+      <PmcWorldMovementSection />
+
+      <RefSiteSections />
+
       <Footer />
 
     </div>
@@ -398,19 +404,19 @@ const videoSections = [
     id: 1,
     title: 'About Patriji',
     description: 'Discover the path to inner peace and spiritual awakening through Anapanasati Meditation',
-    video: '/videos/patriji_slider_org.mp4'
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327209/patriji_slider_org_dxfy7d.mp4'
   },
   {
     id: 2,
     title: 'About Patriji',
     description: 'Experience the profound benefits of meditation and conscious living',
-    video: '/videos/patriji_slider_org.mp4'
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327209/patriji_slider_org_dxfy7d.mp4'
   },
   {
     id: 3,
     title: 'About Patriji',
     description: 'Join our global community of spiritual seekers and meditation practitioners',
-    video: '/videos/patriji_slider-org.mp4'
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327209/patriji_slider_org_dxfy7d.mp4'
   }
 ];
 
@@ -596,37 +602,37 @@ const qualityCards = [
   {
     id: 1,
     title: 'VEGETARIANISM',
-    video: '/videos/vegeterians.mp4',
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327209/vegeterians_nr7zqo.mp4',
     link: '#'
   },
   {
     id: 2,
     title: 'ANAPANSATI MEDITATION',
-    video: '/videos/meditation.mp4',
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327209/meditation_fnqyoh.mp4',
     link: '#'
   },
   {
     id: 3,
     title: 'ABOUT THE PSSM',
-    video: '/videos/pssm.mp4',
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327213/pssm_erlngc.mp4',
     link: '#'
   },
   {
     id: 4,
     title: 'LITERATURES',
-    video: '/videos/literatures.mp4',
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327207/literatures_cgctef.mp4',
     link: '#'
   },
   {
     id: 5,
     title: 'FAQ',
-    video: '/videos/faq.mp4',
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327207/faq_yxrykw.mp4',
     link: '#'
   },
   {
     id: 6,
     title: 'NEWS',
-    video: '/videos/news.mp4',
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327210/news_lq9mau.mp4',
     link: '#'
   }
 ];
