@@ -80,7 +80,7 @@ function AboutPatrijiPage() {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="relative hidden min-h-[410px] overflow-hidden rounded-t-[10px] bg-[#3674cf] lg:block lg:rounded-tr-none"
+              className="relative hidden min-h-[410px] overflow-hidden rounded-[10px] bg-[#3674cf] lg:block"
             >
               <Image
                 alt="Patriji"
@@ -90,6 +90,8 @@ function AboutPatrijiPage() {
                 className="object-contain object-bottom"
                 src="/images/patriji-about.png"
               />
+              {/* Blue gradient overlay at bottom-right meeting point with video card */}
+              <div className="hidden lg:block absolute inset-0 bg-gradient-to-tl from-[#3674cf]/50 via-[#3674cf]/20 to-transparent pointer-events-none"></div>
             </motion.div>
 
             {/* Right - Text Content */}
@@ -133,10 +135,10 @@ function AboutPatrijiPage() {
                 </div>
               </div>
 
-              <div className="hidden items-end justify-start lg:mt-0 lg:flex lg:justify-end">
+              <div className="hidden items-start justify-start lg:mt-0 lg:flex lg:justify-end">
                 <button
                   onClick={() => setIsVideoModalOpen(true)}
-                  className="group relative aspect-[16/9] w-full max-w-[360px] overflow-hidden rounded-[10px] bg-neutral-900 text-left shadow-xl lg:-mt-20 lg:max-w-none"
+                  className="group relative aspect-[16/9] w-full max-w-[360px] overflow-hidden rounded-[10px] bg-neutral-900 text-left shadow-xl lg:-mt-10 lg:max-w-none"
                   aria-label="Watch Patriji video"
                 >
                   <Image
@@ -147,6 +149,8 @@ function AboutPatrijiPage() {
                     src="/images/patriji2.jfif"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent"></div>
+                  {/* Blue gradient overlay from meeting point with portrait */}
+                  <div className="hidden lg:block absolute inset-0 bg-gradient-to-br from-[#3674cf]/50 via-[#3674cf]/20 to-transparent z-10 pointer-events-none rounded-[10px]"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-5 py-2 text-[12px] font-bold text-white backdrop-blur-sm">
                       <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-neutral-900">
@@ -160,9 +164,14 @@ function AboutPatrijiPage() {
                 </button>
               </div>
             </motion.div>
-          </div>
+          {/* Blue pill connector filling the gap between portrait and video card corners */}
+          <div
+            className="hidden lg:block absolute z-30 w-6 h-2.5 rounded-full bg-[#3674cf]"
+            style={{ left: 'calc(66.667% - 12px)', top: 'calc(410px - 5px)' }}
+          ></div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Video Modal */}
       {isVideoModalOpen && (
