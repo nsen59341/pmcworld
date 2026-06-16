@@ -65,6 +65,10 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [autoPlay]);
 
+  useEffect(() => {
+    setShowMahashivratriPopup(true);
+  }, []);
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     setAutoPlay(false);
