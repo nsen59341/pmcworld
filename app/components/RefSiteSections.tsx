@@ -477,7 +477,7 @@ function MeditationNow() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden bg-black border border-[#D4AF37]/30 shadow-2xl"
+              className="relative w-[min(56rem,calc(100vw-2rem),calc(85vh*16/9))] aspect-video rounded-2xl overflow-hidden bg-black border border-[#D4AF37]/30 shadow-2xl"
             >
               <iframe
                 width="100%"
@@ -733,7 +733,7 @@ function PmcPodcastSection() {
         </div>
 
         {/* Episode cards grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-10">
+        {/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-10">
           {episodes.map((ep, i) => (
             <motion.div
               key={ep.title}
@@ -776,10 +776,10 @@ function PmcPodcastSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </div> */}
       </div>
 
-      {activeVideo && (
+      {/* {activeVideo && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
           onClick={() => setActiveVideo(null)}
@@ -807,7 +807,7 @@ function PmcPodcastSection() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </section>
   );
 }

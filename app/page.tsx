@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import type { Swiper as SwiperClass } from 'swiper';
 import { Navigation as NavBar } from '@/app/components/Navigation';
 import { Footer } from '@/app/components/footer';
@@ -156,7 +156,7 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
-                    className="absolute bottom-12 left-8 md:left-16 flex gap-2"
+                    className="absolute bottom-12 left-8 md:left-16 flex gap-2 hidden"
                   >
                     {heroSlides.map((_, idx) => (
                       <button
@@ -184,7 +184,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="hidden lg:block absolute bottom-10 right-12 w-80 z-30"
+          className="lg:absolute lg:bottom-10 lg:right-12 lg:w-80 z-30 relative w-full max-w-[240px] mx-auto mt-4 sm:mt-6 px-5 sm:px-8 lg:px-0 lg:mt-0 lg:mx-0"
         >
           <div
             className="relative block rounded-2xl overflow-hidden group transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] bg-transparent cursor-pointer"
@@ -208,7 +208,7 @@ export default function Home() {
               ></iframe>
 
               {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+              <div className="absolute inset-0 flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 transition-opacity bg-black/20">
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
                   <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-white border-b-[8px] border-b-transparent ml-1" style={{ transform: 'scale(1.19371)' }}></div>
                 </div>
@@ -232,7 +232,7 @@ export default function Home() {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden bg-black border border-[#D4AF37]/30 shadow-2xl"
+                className="relative w-[min(56rem,calc(100vw-2rem),calc(85vh*16/9))] aspect-video rounded-2xl overflow-hidden bg-black border border-[#D4AF37]/30 shadow-2xl"
               >
                 {/* Video with Audio */}
                 <iframe
@@ -311,7 +311,7 @@ export default function Home() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg bg-black border border-[#D4AF37]/20 rounded-3xl overflow-hidden shadow-[0_0_100px_rgba(212,175,55,0.2)]"
+              className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-black border border-[#D4AF37]/20 rounded-3xl shadow-[0_0_100px_rgba(212,175,55,0.2)]"
             >
               {/* Close Button */}
               <button
@@ -335,7 +335,7 @@ export default function Home() {
               </button>
 
               {/* Image Section */}
-              <div className="relative h-64 md:h-80 overflow-hidden">
+              <div className="relative h-40 sm:h-64 md:h-80 overflow-hidden rounded-t-3xl">
                 <img
                   alt="Akhand PC Brahma Dhyan"
                   className="w-full h-full object-cover object-[center_35%] grayscale-[0.2] hover:grayscale-0 transition-all duration-1000"
@@ -345,7 +345,7 @@ export default function Home() {
               </div>
 
               {/* Content Section */}
-              <div className="p-8 text-center relative">
+              <div className="p-5 sm:p-8 text-center relative">
                 <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tighter uppercase leading-none">
                   Akhand PC{' '}                
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-white to-[#D4AF37]">
@@ -452,7 +452,7 @@ function FullScreenVideoSection() {
       <div className="absolute inset-0 bg-black opacity-40"></div>
 
       {/* Navigation Dots */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-3 hidden">
         {videoSections.map((_, index) => (
           <motion.button
             key={index}
@@ -713,7 +713,7 @@ function QualityOfLifeSection() {
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
-          modules={[Navigation, Pagination]}
+          modules={[Navigation]}
           slidesPerView={1.5}
           spaceBetween={24}
           breakpoints={{
@@ -721,7 +721,7 @@ function QualityOfLifeSection() {
             1024: { slidesPerView: 3 },
             1280: { slidesPerView: 4 }
           }}
-          pagination={{ clickable: true }}
+          pagination={false}
           className="!pb-20"
         >
           {qualityCards.map((card) => (
