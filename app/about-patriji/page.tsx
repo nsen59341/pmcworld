@@ -184,7 +184,7 @@ function AboutPatrijiPage() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden"
+            className="relative w-[min(56rem,calc(100vw-2rem),calc(85vh*16/9))] aspect-video rounded-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <iframe

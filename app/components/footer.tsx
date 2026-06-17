@@ -2,7 +2,7 @@
 
 export function Footer() {
   return (
-    <footer className="relative w-full mx-auto my-0 bg-gradient-to-b from-slate-950 via-slate-900 to-black text-slate-300 pt-24 pb-12 border-t border-slate-800/50 font-sans transition-colors duration-500 overflow-hidden">
+    <footer className="relative w-full mx-auto my-0 bg-gradient-to-b from-slate-950 via-slate-900 to-black text-slate-300 pt-12 sm:pt-16 md:pt-24 pb-8 sm:pb-10 md:pb-12 border-t border-slate-800/50 font-sans transition-colors duration-500 overflow-hidden">
       {/* Top Gradient Border */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-70"></div>
 
@@ -12,18 +12,18 @@ export function Footer() {
 
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-12 mb-8 sm:mb-10 md:mb-12">
 
           {/* Branding & About */}
-          <div className="lg:col-span-1 space-y-4">
-            <div className="space-y-2 mb-6">
-              <h2 className="text-2xl font-black text-white">PMC</h2>
-              <p className="text-xs uppercase tracking-widest text-[#D4AF37]/80 font-semibold">World</p>
+          <div className="lg:col-span-1 space-y-3 sm:space-y-4">
+            <div className="space-y-1 sm:space-y-2 mb-3 sm:mb-6">
+              <h2 className="text-lg sm:text-2xl font-black text-white">PMC</h2>
+              <p className="text-[10px] sm:text-xs uppercase tracking-widest text-[#D4AF37]/80 font-semibold">World</p>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed">Join millions on a journey of spiritual awakening and conscious living.</p>
-            <div className="pt-4 border-t border-slate-800/30">
-              <p className="text-xs text-slate-500 uppercase tracking-wide">Follow Us</p>
-              <div className="flex gap-3 mt-3">
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">Join millions on a journey of spiritual awakening and conscious living.</p>
+            <div className="pt-2 sm:pt-4 border-t border-slate-800/30">
+              <p className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wide">Follow Us</p>
+              <div className="flex gap-2 sm:gap-3 mt-2 sm:mt-3">
                 <a href="https://www.facebook.com/Pmcworldd" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-slate-800/50 hover:bg-[#D4AF37] text-slate-300 hover:text-black flex items-center justify-center transition-all duration-300 hover:scale-110">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
@@ -41,42 +41,42 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-6">Programs</h3>
-            <nav className="space-y-3">
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Anapanasati Meditation</a>
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Vegetarianism</a>
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Yoga &amp; Wellness</a>
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Isha Home School</a>
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Music &amp; Arts</a>
+          <div className="space-y-2 sm:space-y-4">
+            <h3 className="text-[11px] sm:text-sm font-bold uppercase tracking-widest text-white mb-2 sm:mb-6">Programs</h3>
+            <nav className="space-y-1.5 sm:space-y-3">
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Anapanasati Meditation</a>
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Vegetarianism</a>
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Yoga &amp; Wellness</a>
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Isha Home School</a>
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Music &amp; Arts</a>
             </nav>
           </div>
 
           {/* Resources */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-6">Resources</h3>
-            <nav className="space-y-3">
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Blog</a>
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Literatures</a>
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Media &amp; Press</a>
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">FAQ</a>
-              <a href="/" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Careers</a>
+          <div className="space-y-2 sm:space-y-4">
+            <h3 className="text-[11px] sm:text-sm font-bold uppercase tracking-widest text-white mb-2 sm:mb-6">Resources</h3>
+            <nav className="space-y-1.5 sm:space-y-3">
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Blog</a>
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Literatures</a>
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Media &amp; Press</a>
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">FAQ</a>
+              <a href="/" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors duration-300 block">Careers</a>
             </nav>
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-6">Contact</h3>
-            <div className="space-y-4">
-              <div className="text-sm">
-                <p className="text-slate-400 mb-2">📍Headquarters</p>
-                <p className="text-slate-500 text-xs leading-relaxed">D-203, Divya Heights,<br />Rahatani, Pune 411009</p>
+          <div className="space-y-2 sm:space-y-4">
+            <h3 className="text-[11px] sm:text-sm font-bold uppercase tracking-widest text-white mb-2 sm:mb-6">Contact</h3>
+            <div className="space-y-2 sm:space-y-4">
+              <div className="text-xs sm:text-sm">
+                <p className="text-slate-400 mb-1 sm:mb-2">📍Headquarters</p>
+                <p className="text-slate-500 text-[10px] sm:text-xs leading-relaxed">D-203, Divya Heights,<br />Rahatani, Pune 411009</p>
               </div>
-              <div className="space-y-2">
-                <a href="tel:+918300083111" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors flex items-center gap-2">
+              <div className="space-y-1 sm:space-y-2">
+                <a href="tel:+918300083111" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors flex items-center gap-1.5 sm:gap-2">
                   <span>📞</span> +91 8300083111
                 </a>
-                <a href="mailto:support@pmc.org" className="text-sm text-slate-400 hover:text-[#D4AF37] transition-colors flex items-center gap-2">
+                <a href="mailto:support@pmc.org" className="text-xs sm:text-sm text-slate-400 hover:text-[#D4AF37] transition-colors flex items-center gap-1.5 sm:gap-2">
                   <span>✉️</span> support@pmc.org
                 </a>
               </div>
