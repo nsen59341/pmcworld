@@ -36,16 +36,12 @@ function AboutPatrijiPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mb-12 lg:mb-16"
+            className="mb-12 text-center lg:mb-16"
           >
-            <span className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.3em] text-[#D4AF37]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]" />
-              About Patriji
-            </span>
-            <h1 className="max-w-2xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Do you have a hunger{' '}
+            <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Dr. Brahmarshi Pitamaha Patriji - Founder of {}
               <span className="bg-gradient-to-r from-[#D4AF37] to-[#B8860B] bg-clip-text text-transparent">
-                to increase the quality of your life?
+                 PSSM
               </span>
             </h1>
           </motion.div>
