@@ -3,7 +3,7 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --accent-gold: #D99A46;
+  --accent-gold: #D4AF37;
   --accent-gold-dark: #B3782C;
   --accent-gold-light: #F4DF8D;
 }
@@ -21,4 +21,37 @@ body {
   font-family: 'Open Sans', 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes ref-marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes ref-marquee-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes masters-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+
+.animate-ref-marquee-left {
+  animation: ref-marquee-left 60s linear infinite;
+}
+
+.animate-ref-marquee-right {
+  animation: ref-marquee-right 45s linear infinite;
+}
+
+.masters-scroll {
+  animation: masters-marquee 120s linear infinite;
+}
+
+.group\/marquee:hover .animate-ref-marquee-left,
+.group\/marquee:hover .animate-ref-marquee-right,
+.group\/marquee:hover .masters-scroll {
+  animation-play-state: paused;
 }

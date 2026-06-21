@@ -16,6 +16,10 @@ Expert web developer building a modern, high-performance website with rich media
 - Fast and user-friendly interface
 - Smooth video playback
 
+### Responsiveness
+- Every change or new feature must be verified in mobile **portrait** and **landscape** orientations, not just desktop.
+- Mobile (both orientations) must preserve the same visual-effect quality as desktop — video/image effects, animations, and transitions should not be stripped down or degraded on smaller viewports.
+
 ### Content
 - Use original videos from pmcworld.in
 - Incorporate updates from pmcworld_updt_1.docx document
