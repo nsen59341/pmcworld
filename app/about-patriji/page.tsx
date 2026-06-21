@@ -50,8 +50,8 @@ function AboutPatrijiPage() {
             </h1>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
-            {/* Portrait + floating video card */}
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_0.9fr_1fr] lg:items-center">
+            {/* Portrait */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -64,49 +64,23 @@ function AboutPatrijiPage() {
                   alt="Brahmarshi Pitamaha Patriji"
                   fill
                   priority
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, 100vw"
                   className="object-cover object-top"
                   src="/images/patriji-about.png"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
-
-              <button
-                onClick={() => setIsVideoModalOpen(true)}
-                aria-label="Watch Patriji's video"
-                className="group absolute -bottom-6 -right-4 w-2/3 max-w-[260px] overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(212,175,55,0.35)] sm:-bottom-8 sm:-right-8"
-              >
-                <div className="relative aspect-video">
-                  <Image
-                    alt="Patriji video thumbnail"
-                    fill
-                    sizes="260px"
-                    className="object-cover opacity-90 transition group-hover:scale-105"
-                    src="/images/patriji2.jfif"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-neutral-900 shadow-lg transition-transform duration-300 group-hover:scale-110">
-                      <Icon name="play" className="ml-0.5 h-5 w-5" />
-                    </span>
-                  </div>
-                  <span className="absolute left-3 top-3 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-white drop-shadow">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
-                    Watch
-                  </span>
-                </div>
-              </button>
             </motion.div>
 
-            {/* Text content */}
+            {/* Text content - centered between image and video */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="pt-6 lg:pt-0"
+              className="px-2 text-center"
             >
-              <p className="max-w-md text-base leading-relaxed text-slate-300 sm:text-lg">
+              <p className="mx-auto max-w-sm text-base leading-relaxed text-slate-300 sm:text-lg">
                 Dr. Brahmarshi Pitamaha Patriji hails from Telangana, a family man with an
                 Ag.Msc degree, flutist, avid reader with many more feathers to his hat. He
                 became enlightened in the year 1979, since then his journey to awaken and
@@ -125,7 +99,7 @@ function AboutPatrijiPage() {
                 <Icon name="arrow" className="h-4 w-4" />
               </motion.a>
 
-              <div className="mt-10 grid grid-cols-3 gap-4 border-t border-white/10 pt-8 sm:gap-6">
+              <div className="mx-auto mt-10 grid max-w-sm grid-cols-3 gap-4 border-t border-white/10 pt-8 sm:gap-6">
                 {stats.map((stat) => (
                   <div key={stat.label}>
                     <p className="text-2xl font-black text-[#D4AF37] sm:text-3xl">{stat.value}</p>
@@ -135,6 +109,39 @@ function AboutPatrijiPage() {
                   </div>
                 ))}
               </div>
+            </motion.div>
+
+            {/* Video - matches portrait size */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative"
+            >
+              <button
+                onClick={() => setIsVideoModalOpen(true)}
+                aria-label="Watch Patriji's video"
+                className="group relative block aspect-[4/5] max-h-[560px] w-full overflow-hidden rounded-[2rem] border border-white/10 bg-black shadow-2xl transition-all duration-300 hover:shadow-[0_0_40px_rgba(212,175,55,0.35)]"
+              >
+                <Image
+                  alt="Patriji video thumbnail"
+                  fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
+                  className="object-cover opacity-90 transition group-hover:scale-105"
+                  src="/images/patriji2.jfif"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-neutral-900 shadow-lg transition-transform duration-300 group-hover:scale-110">
+                    <Icon name="play" className="ml-1 h-6 w-6" />
+                  </span>
+                </div>
+                <span className="absolute left-4 top-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-white drop-shadow">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
+                  Watch video
+                </span>
+              </button>
             </motion.div>
           </div>
         </div>
