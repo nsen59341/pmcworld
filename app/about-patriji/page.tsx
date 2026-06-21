@@ -1,218 +1,248 @@
-﻿'use client';
+'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Navigation } from '@/app/components/Navigation';
-import { Footer } from '@/app/components/footer';
+import { Navigation } from '@/app/components/layout/Navigation';
+import { Footer } from '@/app/components/layout/Footer';
+import { VideoModal } from '@/app/components/ui/VideoModal';
+import { Icon } from '@/app/components/ui/Icon';
+
+const stats = [
+  { value: '1979', label: 'Year of Enlightenment' },
+  { value: '40+', label: 'Countries Reached' },
+  { value: 'Crores', label: 'Lives Touched' },
+];
+
+const featuredLogos = ['PSSM', 'PMC', 'Dhyan Jagat', 'PMC World'];
 
 function AboutPatrijiPage() {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
-  const featuredLogos = ['PSSM', 'PMC', 'Dhyan Jagat', 'PMC World'];
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
+    <div className="min-h-screen bg-[#0a0a0a] text-white">
       <Navigation />
 
-      {/* Content Spacer for Fixed Nav */}
-      <div className="h-20"></div>
+      <div className="h-20" />
 
-      {/* About Patriji Section */}
-      <section className="relative overflow-hidden bg-white px-5 py-8 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-[1160px]">
-          <div className="relative grid min-h-[535px] grid-cols-1 gap-0 lg:grid-cols-[2fr_1fr]">
-            {/* Mobile: portrait above video, 70/30 split */}
-            <div className="lg:hidden">
-              {/* Image card - 70% visual weight */}
-              <div className="relative min-h-[340px] overflow-hidden rounded-t-[10px] bg-[#3674cf] shadow-lg sm:min-h-[400px]">
+      {/* Hero - heading-first layout, mirrors the homepage "Do you have a hunger" section */}
+      <section className="relative w-full overflow-hidden bg-slate-900 px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -right-32 -top-24 h-[500px] w-[500px] rounded-full bg-[#D4AF37]/5 blur-[120px]" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 lg:mb-16"
+          >
+            <span className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.3em] text-[#D4AF37]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]" />
+              About Patriji
+            </span>
+            <h1 className="max-w-2xl text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Do you have a hunger{' '}
+              <span className="bg-gradient-to-r from-[#D4AF37] to-[#B8860B] bg-clip-text text-transparent">
+                to increase the quality of your life?
+              </span>
+            </h1>
+          </motion.div>
+
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+            {/* Portrait + floating video card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative"
+            >
+              <div className="relative aspect-[4/5] max-h-[560px] overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-b from-[#3674cf] to-[#1d3f7a] shadow-2xl">
                 <Image
-                  alt="Patriji"
+                  alt="Brahmarshi Pitamaha Patriji"
                   fill
                   priority
-                  sizes="100vw"
-                  className="object-contain object-bottom"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-top"
                   src="/images/patriji-about.png"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
 
-              {/* Thin blue connector with concave ends - no white background, positioned between cards */}
-              <div className="relative z-10 flex justify-center -mt-1">
-                <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 0 Q24 12 12 24 L108 24 Q96 12 108 0 Z" fill="#3674CF" />
-                </svg>
-              </div>
-
-              {/* Video card - 30% visual weight */}
-              <div className="relative bg-white shadow-md">
-                <div className="px-2 pb-2 pt-0 sm:px-3 sm:pb-3">
-                  <button
-                    onClick={() => setIsVideoModalOpen(true)}
-                    className="group relative aspect-[16/9] w-full overflow-hidden rounded-[10px] bg-neutral-900 text-left shadow-xl"
-                    aria-label="Watch Patriji video"
-                  >
-                    <Image
-                      alt="Patriji video thumbnail"
-                      fill
-                      sizes="100vw"
-                      className="object-cover opacity-90 transition group-hover:scale-105"
-                      src="/images/patriji2.jfif"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1.5 text-[10px] font-bold text-white backdrop-blur-sm sm:px-5 sm:py-2 sm:text-[12px]">
-                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-neutral-900 sm:h-6 sm:w-6">
-                          <svg className="ml-0.5 h-2.5 w-2.5 sm:h-3 sm:w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </span>
-                        Watch video
-                      </span>
-                    </div>
-                  </button>
+              <button
+                onClick={() => setIsVideoModalOpen(true)}
+                aria-label="Watch Patriji's video"
+                className="group absolute -bottom-6 -right-4 w-2/3 max-w-[260px] overflow-hidden rounded-2xl border border-white/10 bg-black shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(212,175,55,0.35)] sm:-bottom-8 sm:-right-8"
+              >
+                <div className="relative aspect-video">
+                  <Image
+                    alt="Patriji video thumbnail"
+                    fill
+                    sizes="260px"
+                    className="object-cover opacity-90 transition group-hover:scale-105"
+                    src="/images/patriji2.jfif"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-neutral-900 shadow-lg transition-transform duration-300 group-hover:scale-110">
+                      <Icon name="play" className="ml-0.5 h-5 w-5" />
+                    </span>
+                  </div>
+                  <span className="absolute left-3 top-3 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-white drop-shadow">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
+                    Watch
+                  </span>
                 </div>
-              </div>
-            </div>
-
-            {/* Portrait - desktop only */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative hidden min-h-[410px] overflow-hidden rounded-[10px] bg-[#3674cf] lg:block"
-            >
-              <Image
-                alt="Patriji"
-                fill
-                priority
-                sizes="(min-width: 1024px) 66vw, 100vw"
-                className="object-contain object-bottom"
-                src="/images/patriji-about.png"
-              />
-              {/* Blue gradient overlay at bottom-right meeting point with video card */}
-              <div className="hidden lg:block absolute inset-0 bg-gradient-to-tl from-[#3674cf]/50 via-[#3674cf]/20 to-transparent pointer-events-none"></div>
+              </button>
             </motion.div>
 
-            {/* Right - Text Content */}
+            {/* Text content */}
             <motion.div
-              className="relative flex min-h-[260px] flex-col justify-center bg-white px-8 py-10 text-black sm:px-12 lg:min-h-[410px] lg:rounded-bl-[24px] lg:px-14"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="pt-6 lg:pt-0"
             >
-              <p className="max-w-[280px] text-[13px] font-semibold leading-[1.45] text-neutral-950 sm:text-sm">
-                Dr. Brahmarshi Pitamaha Patriji hails from Telangana, a Family man with Ag.Msc degree, flutist, avid reader with many more feathers to his hat. Became enlightened in the year 1979, since then his journey to awaken and enlighten every individual on the Spiritual path began. Hence, PSSM now has presence in more than 40 countries with crores and crores of people imbibing meditation.
+              <p className="max-w-md text-base leading-relaxed text-slate-300 sm:text-lg">
+                Dr. Brahmarshi Pitamaha Patriji hails from Telangana, a family man with an
+                Ag.Msc degree, flutist, avid reader with many more feathers to his hat. He
+                became enlightened in the year 1979, since then his journey to awaken and
+                enlighten every individual on the spiritual path began. Hence, PSSM now has
+                presence in more than 40 countries with crores and crores of people imbibing
+                meditation.
               </p>
 
               <motion.a
                 href="#patriji-story"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                className="mt-5 inline-flex w-fit items-center rounded-full bg-neutral-100 px-8 py-3 text-[11px] font-extrabold text-neutral-900 shadow-sm transition hover:bg-neutral-200"
+                className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-8 py-3.5 text-sm font-bold text-black shadow-[0_0_30px_rgba(212,175,55,0.3)] transition hover:bg-[#C49A2F]"
               >
                 Know Patriji
+                <Icon name="arrow" className="h-4 w-4" />
               </motion.a>
-            </motion.div>
 
-            <motion.div
-              id="patriji-story"
-              initial={{ opacity: 0, y: 45 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="relative z-10 bg-white px-0 py-10 lg:col-span-2 lg:mt-0 lg:grid lg:min-h-[190px] lg:grid-cols-[2fr_1fr]"
-            >
-              <div className="px-0 lg:rounded-tr-[24px] lg:bg-white lg:pt-10">
-                <div className="grid grid-cols-2 gap-x-8 gap-y-6 pr-0 sm:grid-cols-4 lg:pr-10">
-                  {featuredLogos.map((logo) => (
-                    <div
-                      key={logo}
-                      className="flex min-h-10 items-center text-[22px] font-black leading-none text-neutral-300 sm:text-[24px] lg:text-[28px]"
-                    >
-                      {logo}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="hidden items-start justify-start lg:mt-0 lg:flex lg:justify-end">
-                <button
-                  onClick={() => setIsVideoModalOpen(true)}
-                  className="group relative aspect-[16/9] w-full max-w-[360px] overflow-hidden rounded-[10px] bg-neutral-900 text-left shadow-xl lg:-mt-10 lg:max-w-none"
-                  aria-label="Watch Patriji video"
-                >
-                  <Image
-                    alt="Patriji video thumbnail"
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 360px"
-                    className="object-cover opacity-90 transition group-hover:scale-105"
-                    src="/images/patriji2.jfif"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent"></div>
-                  {/* Blue gradient overlay from meeting point with portrait */}
-                  <div className="hidden lg:block absolute inset-0 bg-gradient-to-br from-[#3674cf]/50 via-[#3674cf]/20 to-transparent z-10 pointer-events-none rounded-[10px]"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-white/20 px-5 py-2 text-[12px] font-bold text-white backdrop-blur-sm">
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-neutral-900">
-                        <svg className="ml-0.5 h-3 w-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </span>
-                      Watch video
-                    </span>
+              <div className="mt-10 grid grid-cols-3 gap-4 border-t border-white/10 pt-8 sm:gap-6">
+                {stats.map((stat) => (
+                  <div key={stat.label}>
+                    <p className="text-2xl font-black text-[#D4AF37] sm:text-3xl">{stat.value}</p>
+                    <p className="mt-1 text-[11px] uppercase tracking-wide text-slate-400 sm:text-xs">
+                      {stat.label}
+                    </p>
                   </div>
-                </button>
+                ))}
               </div>
             </motion.div>
-          {/* Blue pill connector filling the gap between portrait and video card corners */}
-          <div
-            className="hidden lg:block absolute z-30 w-6 h-2.5 rounded-full bg-[#3674cf]"
-            style={{ left: 'calc(66.667% - 12px)', top: 'calc(410px - 5px)' }}
-          ></div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-      {/* Video Modal */}
-      {isVideoModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-          onClick={() => setIsVideoModalOpen(false)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="relative w-[min(56rem,calc(100vw-2rem),calc(85vh*16/9))] aspect-video rounded-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
+      {/* Quote */}
+      <motion.section
+        id="patriji-story"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="relative overflow-hidden border-y border-white/5 bg-slate-950 px-5 py-20 sm:px-8 lg:px-10"
+      >
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-[#D4AF37]/5 blur-[100px]" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
+          <span className="font-serif text-6xl leading-none text-[#D4AF37]/40">&ldquo;</span>
+          <p className="mt-2 text-2xl font-semibold leading-relaxed tracking-tight text-white sm:text-3xl">
+            Meditation is not an escape from life — it is the practice that brings you
+            fully into it.
+          </p>
+          <p className="mt-6 text-sm font-bold uppercase tracking-[0.3em] text-[#D4AF37]">
+            Brahmarshi Pitamaha Patriji
+          </p>
+        </div>
+      </motion.section>
+
+      {/* Featured / affiliated organizations */}
+      <section className="relative px-5 py-20 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1160px]">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 text-center text-xs font-bold uppercase tracking-[0.3em] text-slate-500"
           >
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/3cuO6F8tpdk?enablejsapi=1&autoplay=1&rel=0&showinfo=0&modestbranding=1&disablekb=1&iv_load_policy=3"
-              title="Patriji's Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-
-            {/* Close Button */}
-            <button
-              onClick={() => setIsVideoModalOpen(false)}
-              className="absolute top-4 right-4 bg-[#D4AF37] hover:bg-[#E8C547] text-black rounded-full p-2 transition-colors z-10"
-              aria-label="Close modal"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+            Founded &amp; Inspired Organizations
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex flex-wrap items-center justify-center gap-4 sm:gap-6"
+          >
+            {featuredLogos.map((logo) => (
+              <div
+                key={logo}
+                className="flex min-h-14 items-center rounded-2xl border border-white/10 bg-white/5 px-8 py-4 text-lg font-black tracking-tight text-slate-200 backdrop-blur-sm transition-colors hover:border-[#D4AF37]/40 hover:text-[#D4AF37] sm:text-xl"
+              >
+                {logo}
+              </div>
+            ))}
           </motion.div>
         </div>
-      )}
+      </section>
+
+      {/* CTA */}
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="relative overflow-hidden px-5 py-20 sm:px-8 lg:px-10"
+      >
+        <div className="mx-auto max-w-[1160px] overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-black px-8 py-16 text-center shadow-2xl sm:px-16">
+          <h2 className="text-3xl font-black leading-tight sm:text-4xl">
+            Begin your own journey{' '}
+            <span className="bg-gradient-to-r from-[#F4DF8D] via-[#D4AF37] to-[#B3782C] bg-clip-text text-transparent">
+              towards enlightenment.
+            </span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm text-slate-400 sm:text-base">
+            Join millions practicing Anapanasati meditation under Patriji&apos;s guidance.
+          </p>
+          <motion.button
+            onClick={() => setIsVideoModalOpen(true)}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-8 py-3.5 text-sm font-bold text-black shadow-[0_0_30px_rgba(212,175,55,0.3)] transition hover:bg-[#C49A2F]"
+          >
+            Watch Patriji&apos;s Story
+            <Icon name="play" className="h-4 w-4" />
+          </motion.button>
+        </div>
+      </motion.section>
+
+      <VideoModal
+        open={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        src="https://www.youtube.com/embed/3cuO6F8tpdk?enablejsapi=1&autoplay=1&rel=0&showinfo=0&modestbranding=1&disablekb=1&iv_load_policy=3"
+        title="Patriji's Video"
+        panelClassName="relative w-[min(56rem,calc(100vw-2rem),calc(85vh*16/9))] aspect-video rounded-2xl overflow-hidden"
+        closeButtonClassName="absolute top-4 right-4 bg-[#D4AF37] hover:bg-[#E8C547] text-black rounded-full p-2 transition-colors z-10"
+        closeIcon={
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        }
+      />
 
       <Footer />
     </div>
