@@ -8,19 +8,19 @@ const videoSections = [
     id: 1,
     title: 'About Patriji',
     description: 'Discover the path to inner peace and spiritual awakening through Anapanasati Meditation',
-    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327209/patriji_slider_org_dxfy7d.mp4'
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1782558826/Untitled_design_1_iigega.mp4'
   },
   {
     id: 2,
     title: 'About Patriji',
     description: 'Experience the profound benefits of meditation and conscious living',
-    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327209/patriji_slider_org_dxfy7d.mp4'
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1782558826/Untitled_design_1_iigega.mp4'
   },
   {
     id: 3,
     title: 'About Patriji',
     description: 'Join our global community of spiritual seekers and meditation practitioners',
-    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1781327209/patriji_slider_org_dxfy7d.mp4'
+    video: 'https://res.cloudinary.com/dtmtujxht/video/upload/v1782558826/Untitled_design_1_iigega.mp4'
   }
 ];
 

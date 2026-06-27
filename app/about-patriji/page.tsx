@@ -23,7 +23,7 @@ function AboutPatrijiPage() {
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <Navigation />
 
-      <div className="h-20" />
+      <div className="h-24" />
 
       {/* Hero - heading-first layout, mirrors the homepage "Do you have a hunger" section */}
       <section className="relative w-full overflow-hidden bg-slate-900 px-5 py-16 sm:px-8 lg:px-12 lg:py-24">

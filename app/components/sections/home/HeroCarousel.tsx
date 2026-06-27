@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AboutPatrijiCard } from './AboutPatrijiCard';
 
 const heroSlides = [
   {
@@ -70,7 +69,7 @@ export function HeroCarousel() {
   };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden pt-20">
+    <section className="relative w-full h-screen overflow-hidden pt-24">
       <AnimatePresence mode="wait">
         {heroSlides.map((slide, index) => (
           index === currentSlide && (
@@ -158,8 +157,6 @@ export function HeroCarousel() {
           )
         ))}
       </AnimatePresence>
-
-      <AboutPatrijiCard />
 
       {/* Navigation Arrows */}
       <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 md:px-12 pointer-events-none z-10 hidden">
